@@ -1,0 +1,18 @@
+:root {
+  --background-color: #282c34;
+}
+
+body {
+  margin: 0;
+  padding: 0px 0px;
+  background-color: var(--background-color);
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+}
