@@ -18,5 +18,5 @@ body {
 }
 
 .block {
-  background-color: blue;
+  border: 1px solid #fff;
 }

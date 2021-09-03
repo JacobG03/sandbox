@@ -59,11 +59,21 @@ function Block(props) {
       width: `${width}px`, 
       height: `${height}px`,
       marginLeft: `${props.position.start_x}px`,
-      marginTop: `${props.position.start_y}px`
+      marginTop: `${props.position.start_y}px`,
+      backgroundColor: getRandomColor(),
       }}
       >
     </div>
   )
+}
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
 
 
