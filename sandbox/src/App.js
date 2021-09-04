@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
 
 function App() {
   // Coordinates of mouse click down and click up
@@ -38,7 +39,7 @@ function App() {
 function BlocksList(props) {
   let positions = props.blocks
   const blockItems = positions.map((position) =>
-    <Block key={positions.id} position={position} />
+    <Block key={position.id} position={position} />
   );
 
   return (
@@ -49,10 +50,23 @@ function BlocksList(props) {
 }
 
 function Block(props) {
-  console.log(props.position)
-  var width = props.position.end_x - props.position.start_x
-  var height = props.position.end_y - props.position.start_y
-  console.log(`${width}px`)
+  const [image, setImage] = useState('')
+  
+  var width = props.position.end_x - props.position.start_x;
+  var height = props.position.end_y - props.position.start_y;
+  
+  
+  const getImage = async function(width, height) {
+    fetch(`https://picsum.photos/${width}/${height}`)
+      .then(response => {
+        setImage(response['url']);
+      })
+  }
+
+  useEffect(() => {
+    getImage(width, height)
+  }, [width, height])
+
   return (
     <div className='block' style={{
       position: 'fixed',
@@ -60,13 +74,16 @@ function Block(props) {
       height: `${height}px`,
       marginLeft: `${props.position.start_x}px`,
       marginTop: `${props.position.start_y}px`,
-      backgroundColor: getRandomColor(),
       }}
-      >
+    >
+      <img alt='' src={image}></img>
     </div>
   )
 }
 
+
+
+// Other functions
 function getRandomColor() {
   var letters = '0123456789ABCDEF';
   var color = '#';
