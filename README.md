@@ -1,2 +1,2 @@
 # sandbox
-A "sandbox" in which the user can create block and play around with them.
+A "sandbox" in which the user can create blocks with random images and play around with them.
